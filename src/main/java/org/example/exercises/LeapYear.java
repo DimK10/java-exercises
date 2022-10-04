@@ -38,9 +38,11 @@ public class LeapYear {
 
         int month = 0;
         Scanner input = new Scanner(inputStream);
-        System.out.print("Please give a valid month: ");
+
 
         try {
+
+            System.out.println("Please give a valid month: ");
             month = input.nextInt();
 
             input.close();
@@ -78,7 +80,6 @@ public class LeapYear {
         try {
             year = input.nextInt();
 
-            input.close();
 
             if (year < 0) {
                 throw new Exception("The input given is not a valid year");
