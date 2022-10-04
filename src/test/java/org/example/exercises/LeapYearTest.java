@@ -140,4 +140,36 @@ class LeapYearTest {
         assertEquals(expectedResult, actualResult);
 
     }
+
+    @Test
+    void isYearGivenALeapYearOn1900ThatIsNotLeap() throws Exception {
+
+        //given
+        int year = 1900;
+        boolean actualResult;
+        boolean expectedResult = false;
+
+        //when
+        actualResult = LeapYear.isYearGivenALeapYear(new ByteArrayInputStream(String.valueOf(year).getBytes()));
+
+        //then
+        assertEquals(expectedResult, actualResult);
+
+    }
+
+    @Test
+    void isYearGivenALeapYearOn11816ThatIsLeap() throws Exception {
+
+        //given
+        int year = 1816;
+        boolean actualResult;
+        boolean expectedResult = true;
+
+        //when
+        actualResult = LeapYear.isYearGivenALeapYear(new ByteArrayInputStream(String.valueOf(year).getBytes()));
+
+        //then
+        assertEquals(expectedResult, actualResult);
+
+    }
 }
