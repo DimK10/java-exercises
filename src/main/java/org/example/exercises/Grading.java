@@ -12,7 +12,7 @@ public class Grading {
 
         String grade = "";
 
-        calculateGrade(System.in);
+        grade = calculateGrade(System.in);
         System.out.println("Your grade is: " + grade);
 
 
@@ -30,6 +30,7 @@ public class Grading {
         Scanner input = new Scanner(inputStream);
 
         try {
+            System.out.print("Please give your score: ");
             score = input.nextInt();
 
             input.close();
