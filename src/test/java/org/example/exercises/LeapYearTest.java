@@ -14,15 +14,19 @@ class LeapYearTest {
     void testWrongMonthInput() {
         //given
         String wrongInput = "a";
+        String actualMessage;
+        String expectedMessage = "The input given is not a valid number";
         InputStream in = new ByteArrayInputStream(wrongInput.getBytes());
 
         //when
 
 
         //Then
-        Exception exception = assertThrows(Exception.class, () -> {
+        actualMessage = assertThrows(Exception.class, () -> {
             LeapYear.calculateMonthDays(in, false);
-        });
+        }).getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
@@ -47,8 +51,8 @@ class LeapYearTest {
     @Test
     void testWrongYearInput() {
         //given
-        String wrongInput = "-1";
-        String expectedMessage = "The input given is not a valid year";
+        String wrongInput = "a";
+        String expectedMessage = "The input given is not a valid number";
         InputStream in = new ByteArrayInputStream(wrongInput.getBytes());
 
         //when

@@ -32,6 +32,8 @@ public class Grading {
         try {
             score = input.nextInt();
 
+            input.close();
+
             // check for positive number up to 100
             if (score < 0 || score > 100) {
                 throw new Exception("The input given is not a valid score");

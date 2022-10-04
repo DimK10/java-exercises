@@ -43,6 +43,8 @@ public class LeapYear {
         try {
             month = input.nextInt();
 
+            input.close();
+
             // check for positive number up to 12
             if (month < 0 || month > 12) {
                 throw new Exception("The input given is not a valid month");
@@ -75,6 +77,8 @@ public class LeapYear {
 
         try {
             year = input.nextInt();
+
+            input.close();
 
             if (year < 0) {
                 throw new Exception("The input given is not a valid year");
