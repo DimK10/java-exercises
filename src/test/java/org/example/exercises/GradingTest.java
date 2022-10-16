@@ -13,15 +13,19 @@ class GradingTest {
     void testWrongGradeInput() {
         //given
         String wrongInput = "a";
+        String actualMessage;
+        String expectedMessage = "The input given is not a valid number";
         InputStream in = new ByteArrayInputStream(wrongInput.getBytes());
 
         //when
 
 
         //Then
-        Exception exception = assertThrows(Exception.class, () -> {
+        actualMessage  = assertThrows(Exception.class, () -> {
             Grading.calculateGrade(in);
-        });
+        }).getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test

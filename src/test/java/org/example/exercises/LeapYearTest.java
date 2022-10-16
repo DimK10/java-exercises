@@ -14,15 +14,19 @@ class LeapYearTest {
     void testWrongMonthInput() {
         //given
         String wrongInput = "a";
+        String actualMessage;
+        String expectedMessage = "The input given is not a valid number";
         InputStream in = new ByteArrayInputStream(wrongInput.getBytes());
 
         //when
 
 
         //Then
-        Exception exception = assertThrows(Exception.class, () -> {
+        actualMessage = assertThrows(Exception.class, () -> {
             LeapYear.calculateMonthDays(in, false);
-        });
+        }).getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
@@ -47,8 +51,8 @@ class LeapYearTest {
     @Test
     void testWrongYearInput() {
         //given
-        String wrongInput = "-1";
-        String expectedMessage = "The input given is not a valid year";
+        String wrongInput = "a";
+        String expectedMessage = "The input given is not a valid number";
         InputStream in = new ByteArrayInputStream(wrongInput.getBytes());
 
         //when
@@ -126,6 +130,38 @@ class LeapYearTest {
 
         //given
         int year = 2000;
+        boolean actualResult;
+        boolean expectedResult = true;
+
+        //when
+        actualResult = LeapYear.isYearGivenALeapYear(new ByteArrayInputStream(String.valueOf(year).getBytes()));
+
+        //then
+        assertEquals(expectedResult, actualResult);
+
+    }
+
+    @Test
+    void isYearGivenALeapYearOn1900ThatIsNotLeap() throws Exception {
+
+        //given
+        int year = 1900;
+        boolean actualResult;
+        boolean expectedResult = false;
+
+        //when
+        actualResult = LeapYear.isYearGivenALeapYear(new ByteArrayInputStream(String.valueOf(year).getBytes()));
+
+        //then
+        assertEquals(expectedResult, actualResult);
+
+    }
+
+    @Test
+    void isYearGivenALeapYearOn11816ThatIsLeap() throws Exception {
+
+        //given
+        int year = 1816;
         boolean actualResult;
         boolean expectedResult = true;
 
