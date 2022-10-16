@@ -129,8 +129,12 @@ public class ParkingApp {
 	}
 
 	private static void printHashmapAsTable() {
+		System.out.println("--------------------------------");
+		System.out.printf("| %-28s |%n", "Charges");
+		System.out.println("--------------------------------");
 		for (String key : customerCharges.keySet()) {
-			System.out.printf("| %-20s | %4s |%n", key, customerCharges.get(key));
+			System.out.printf("| %-21s | %4s |%n", key, customerCharges.get(key));
+			System.out.println("--------------------------------");
 		}
 	}
 
@@ -142,7 +146,9 @@ public class ParkingApp {
 		printHashmapAsTable();
 
 		// print sum of charges	as total
-		System.out.println(totalAmountEarned);
+		System.out.printf("| %-21s | %4s |%n", "total:", totalAmountEarned);
+		System.out.println("--------------------------------");
+		System.out.print("\n\n");
 	}
 
 	public static void main(String[] args) {
