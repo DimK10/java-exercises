@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Set;
 
 public class ParkingApp {
 
-	private static Option option = Option.EXIT;
+	private static Option option = Option.NONE;
 	private static float hours = 0.0f;
 	private static float totalAmountEarned = 0.0f;
 	private static int sumOfCars = 0;
@@ -44,7 +45,7 @@ public class ParkingApp {
 		return Option.EXIT;
 	}
 
-	private static <T extends Number> void checkValidInput(Class<T> type,
+	private static <T> void checkValidInput(Class<T> type,
 			InputStream inputStream, String printString) {
 
 		boolean isValid = false;
@@ -55,7 +56,7 @@ public class ParkingApp {
 		String stringInput = "";
 
 
-		while (!isValid) {
+		while (true) {
 			System.out.print(printString);
 
 			try {
@@ -63,31 +64,31 @@ public class ParkingApp {
 					intInput = keyboard.nextInt();
 
 					if (intInput > 0 && intInput <= 3) {
-						isValid = true;
 						option = optionChecker(intInput);
+						break;
 					} else {
 						System.out.println("The input you gave is not correct. Please give a number from one to three");
 					}
 				}
 
 				if (type.getTypeName().equals(Float.class.getTypeName())) {
+
 					floatInput = keyboard.nextFloat();
 					hours = floatInput;
-					isValid = true;
+					break;
 				}
 
 				if (type.getTypeName().equals(String.class.getTypeName())) {
 					System.out.println();
 					stringInput = keyboard.nextLine();
 					customerName = stringInput;
+					break;
 				}
 
 			} catch (InputMismatchException ex) {
 				System.out.println("The input you gave is not correct.");
 			}
 		}
-
-		keyboard.close();
 	}
 
 	private static void addCharge(InputStream inputStream) {
@@ -96,7 +97,7 @@ public class ParkingApp {
 
 		// check for valid input - if not valid loop
 
-		checkValidInput(Float.TYPE, inputStream,
+		checkValidInput(Float.class, inputStream,
 				"Please give the hours the car stayed in the parking lot\n");
 
 		calsulateCharges(hours);
@@ -109,11 +110,14 @@ public class ParkingApp {
 		if (hours >= 24) {
 			charge = 10.00f;
 		} else if (hours >= 3){
-			charge = 3.0f * 2 + (hours - 3.0f) * 2.5f;
+			charge = 2 + (hours - 3.0f) * 0.5f;
 		} else {
-			charge = hours * 2;
+			charge = 2;
 		}
 		// create customer value in hashmap
+
+		checkValidInput(String.class, inputStream, "Please give the customer name:\n");
+
 		customerCharges.put(customerName, String.valueOf(charge));
 
 
@@ -145,17 +149,20 @@ public class ParkingApp {
 
 		System.out.println("Welcome to parking app! Please give one of the following options:");
 
-		checkValidInput(Integer.TYPE, inputStream, "1. Charge\n2. Sum\n3. Exit\n");
+		do {
+			checkValidInput(Integer.class, inputStream, "1. Charge\n2. Sum\n3. Exit\n");
 
-		switch (option) {
-			case CHARGE:
-				addCharge(inputStream);
-				break;
-			case SUM:
-				printCharges();
-				break;
-			default:
-				return;
-		}
+			switch (option) {
+				case CHARGE:
+					addCharge(inputStream);
+					continue;
+				case SUM:
+					printCharges();
+					continue;
+				default:
+					continue;
+			}
+		} while (!option.equals(Option.EXIT));
+
 	}
 }
