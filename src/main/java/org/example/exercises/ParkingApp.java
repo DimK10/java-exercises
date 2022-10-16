@@ -21,16 +21,6 @@ public class ParkingApp {
 	private static InputStream inputStream = System.in;
 
 	private static Option optionChecker(Integer input) {
-		// todo
-
-
-
-		// ask user for option
-
-		// get option from user
-
-		// check validity of option - if not valid loop
-
 		// return valid option via enum value
 
 		switch (input) {
@@ -87,6 +77,7 @@ public class ParkingApp {
 
 			} catch (InputMismatchException ex) {
 				System.out.println("The input you gave is not correct.");
+				keyboard.nextLine();
 			}
 		}
 	}
