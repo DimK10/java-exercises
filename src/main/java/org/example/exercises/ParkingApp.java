@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class ParkingApp {
 
@@ -14,7 +15,8 @@ public class ParkingApp {
 	private static float hours = 0.0f;
 	private static float totalAmountEarned = 0.0f;
 	private static int sumOfCars = 0;
-	private static Map<String, Float> customerCharges = new HashMap<>();
+	private static String customerName = "";
+	private static Map<String, String> customerCharges = new HashMap<>();
 	private static InputStream inputStream = System.in;
 
 	private static Option optionChecker(Integer input) {
@@ -49,7 +51,8 @@ public class ParkingApp {
 
 		Scanner keyboard = new Scanner(inputStream);
 		int intInput = 0;
-
+		float floatInput = 0.0f;
+		String stringInput = "";
 
 
 		while (!isValid) {
@@ -68,12 +71,19 @@ public class ParkingApp {
 				}
 
 				if (type.getTypeName().equals(Float.class.getTypeName())) {
-					hours = keyboard.nextFloat();
+					floatInput = keyboard.nextFloat();
+					hours = floatInput;
 					isValid = true;
 				}
 
+				if (type.getTypeName().equals(String.class.getTypeName())) {
+					System.out.println();
+					stringInput = keyboard.nextLine();
+					customerName = stringInput;
+				}
+
 			} catch (InputMismatchException ex) {
-				System.out.println("The input you gave is not correct. Please give a number from one to three");
+				System.out.println("The input you gave is not correct.");
 			}
 		}
 
@@ -99,22 +109,36 @@ public class ParkingApp {
 		if (hours >= 24) {
 			charge = 10.00f;
 		} else if (hours >= 3){
-			charge = 3 * 2 + (hours - 3) * 2.5f;
+			charge = 3.0f * 2 + (hours - 3.0f) * 2.5f;
 		} else {
 			charge = hours * 2;
 		}
 		// create customer value in hashmap
+		customerCharges.put(customerName, String.valueOf(charge));
+
 
 		// add charge to sum of charges
+		totalAmountEarned += charge;
 
 		// add +1 in sum of cars
+		sumOfCars++;
+	}
+
+	private static void printHashmapAsTable() {
+		for (String key : customerCharges.keySet()) {
+			System.out.printf("| %-20s | %4s |%n", key, customerCharges.get(key));
+		}
 	}
 
 	private static void printCharges() {
 
 		// print sum of cars charged
+		System.out.println("Sum of cars: " + sumOfCars);
 		// print hashmap of customers as a table
+		printHashmapAsTable();
+
 		// print sum of charges	as total
+		System.out.println(totalAmountEarned);
 	}
 
 	public static void main(String[] args) {
