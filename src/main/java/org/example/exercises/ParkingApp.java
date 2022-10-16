@@ -17,7 +17,7 @@ public class ParkingApp {
 	private static float totalAmountEarned = 0.0f;
 	private static int sumOfCars = 0;
 	private static String customerName = "";
-	private static Map<String, String> customerCharges = new HashMap<>();
+	private static Map<String, Float> customerCharges = new HashMap<>();
 	private static InputStream inputStream = System.in;
 
 	private static Option optionChecker(Integer input) {
@@ -109,7 +109,7 @@ public class ParkingApp {
 
 		checkValidInput(String.class, inputStream, "Please give the customer name:\n");
 
-		customerCharges.put(customerName, String.valueOf(charge));
+		customerCharges.put(customerName, charge);
 
 
 		// add charge to sum of charges
@@ -124,7 +124,7 @@ public class ParkingApp {
 		System.out.printf("| %-28s |%n", "Charges");
 		System.out.println("--------------------------------");
 		for (String key : customerCharges.keySet()) {
-			System.out.printf("| %-21s | %4s |%n", key, customerCharges.get(key));
+			System.out.printf("| %-21s | %4.2f |%n", key, customerCharges.get(key));
 			System.out.println("--------------------------------");
 		}
 	}
@@ -137,7 +137,7 @@ public class ParkingApp {
 		printHashmapAsTable();
 
 		// print sum of charges	as total
-		System.out.printf("| %-21s | %4s |%n", "total:", totalAmountEarned);
+		System.out.printf("| %-21s | %4.2f |%n", "total:", totalAmountEarned);
 		System.out.println("--------------------------------");
 		System.out.print("\n\n");
 	}
