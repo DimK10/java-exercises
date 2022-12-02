@@ -98,7 +98,7 @@ public class ParkingApp {
 	private static void calsulateCharges(float hours) {
 		// calculate charge based on hours given
 		float charge = 0.0f;
-		if (hours >= 24) {
+		if (hours >= 10) {
 			charge = 10.00f;
 		} else if (hours >= 3){
 			charge = 2 + (hours - 3.0f) * 0.5f;
