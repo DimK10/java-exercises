@@ -7,9 +7,9 @@ public class Main {
 		Car car = new Car(1L,
 						"Fiat Stilo",
 						"Fiat",
+						2,
 						5,
-						5,
-						800
+						1000
 		);
 
 		car.setPower(900);
@@ -19,7 +19,7 @@ public class Main {
 				2L,
 				"Yamaha Raptor",
 				"Yamaha",
-				500,
+				600,
 				50
 		);
 

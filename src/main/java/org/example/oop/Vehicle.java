@@ -21,7 +21,7 @@ public class Vehicle {
 
 	protected void checkLimit(int value, String propertyName, int minimum, int maximum) throws Exception {
 		if (value > maximum || value < minimum) {
-			throw new Exception("The number of " + propertyName + " can only be between 2 and 5. Number given: " + value);
+			throw new Exception("The number of " + propertyName + " can only be between " + minimum + " and " + maximum + ". Number given: " + value);
 		}
 	}
 

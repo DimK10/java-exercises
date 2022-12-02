@@ -61,7 +61,7 @@ public class Car extends Vehicle {
 				"\n" + "\t" + super.toString() +
 				"\tSeats: " + seats + "\n" +
 				"\tDoors: " + doors + "\n" +
-				"\tTrunkCapacity=" + trunkCapacity + "\n" +
+				"\tTrunkCapacity: " + trunkCapacity + "\n" +
 				'}';
 	}
 }
