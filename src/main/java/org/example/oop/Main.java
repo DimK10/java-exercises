@@ -27,6 +27,7 @@ public class Main {
 		motorCycle.setFuelCapacity(11);
 
 		System.out.println("car: " + car.getVehicle());
+		System.out.println(car.getCapacity());
 		System.out.println();
 		System.out.println(car);
 

@@ -58,7 +58,7 @@ public class Car extends Vehicle {
 	@Override
 	public String toString() {
 		return "Car{" +
-				"\n" + "\t" + super.toString() +
+				"\n" + "\t" + super.toString() + "\n" +
 				"\tSeats: " + seats + "\n" +
 				"\tDoors: " + doors + "\n" +
 				"\tTrunkCapacity: " + trunkCapacity + "\n" +
