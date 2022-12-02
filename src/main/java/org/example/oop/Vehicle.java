@@ -2,6 +2,7 @@ package org.example.oop;
 
 public class Vehicle {
 
+	// properties
 	private Long vehicleId;
 
 	private String model;
@@ -12,6 +13,7 @@ public class Vehicle {
 
 	private int fuelCapacity;
 
+	// constructors
 	public Vehicle(Long vehicleId, String model, String manufacturer) {
 		this.vehicleId = vehicleId;
 		this.model = model;
@@ -19,12 +21,14 @@ public class Vehicle {
 	}
 
 
+	// protected methods
 	protected void checkLimit(int value, String propertyName, int minimum, int maximum) throws Exception {
 		if (value > maximum || value < minimum) {
 			throw new Exception("The number of " + propertyName + " can only be between " + minimum + " and " + maximum + ". Number given: " + value);
 		}
 	}
 
+	// public methods
 	public String getVehicle() {
 		return this.manufacturer + " " + this.model;
 	}

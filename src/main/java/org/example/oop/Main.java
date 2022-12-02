@@ -5,11 +5,11 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 
 		Car car = new Car(1L,
-						"Fiat Stilo",
+						"Stilo",
 						"Fiat",
-						2,
 						5,
-						1000
+						5,
+						800
 		);
 
 		car.setPower(900);
@@ -17,7 +17,7 @@ public class Main {
 
 		MotorCycle motorCycle = new MotorCycle(
 				2L,
-				"Yamaha Raptor",
+				"Raptor",
 				"Yamaha",
 				600,
 				50
@@ -26,7 +26,13 @@ public class Main {
 		motorCycle.setPower(600);
 		motorCycle.setFuelCapacity(11);
 
+		System.out.println("car: " + car.getVehicle());
+		System.out.println();
 		System.out.println(car);
+
+		System.out.println();
+		System.out.println("motorcycle: " + motorCycle.getVehicle());
+		System.out.println();
 		System.out.println(motorCycle);
 	}
 }

@@ -15,8 +15,8 @@ public class Car extends Vehicle {
 
 		// Check for limits in properties, as given in exercise
 		super.checkLimit(seats, "seats",  2, 5);
-		checkLimit(doors, "doors", 2, 5);
-		checkLimit(trunkCapacity, "trunkCapacity", 1, 1000);
+		super.checkLimit(doors, "doors", 2, 5);
+		super.checkLimit(trunkCapacity, "trunkCapacity", 1, 1000);
 
 		this.seats = seats;
 		this.doors = doors;
@@ -33,7 +33,7 @@ public class Car extends Vehicle {
 	}
 
 	public void setSeats(int seats) throws Exception {
-		checkLimit(seats, "seats", 2, 5);
+		super.checkLimit(seats, "seats", 2, 5);
 		this.seats = seats;
 	}
 
@@ -42,7 +42,7 @@ public class Car extends Vehicle {
 	}
 
 	public void setDoors(int doors) throws Exception {
-		checkLimit(doors, "doors", 2, 5);
+		super.checkLimit(doors, "doors", 2, 5);
 		this.doors = doors;
 	}
 
@@ -51,7 +51,7 @@ public class Car extends Vehicle {
 	}
 
 	public void setTrunkCapacity(int trunkCapacity) throws Exception {
-		checkLimit(trunkCapacity, "trunkCapacity", 1, 1000);
+		super.checkLimit(trunkCapacity, "trunkCapacity", 1, 1000);
 		this.trunkCapacity = trunkCapacity;
 	}
 

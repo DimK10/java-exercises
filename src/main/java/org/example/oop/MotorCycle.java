@@ -2,10 +2,12 @@ package org.example.oop;
 
 public class MotorCycle extends Vehicle {
 
+	// properties
 	private int seatHeight;
 
 	private int trail;
 
+	// constructors
 	public MotorCycle(Long vehicleId, String model, String manufacturer, int seatHeight, int trail) throws Exception {
 		super(vehicleId, model, manufacturer);
 
@@ -16,11 +18,13 @@ public class MotorCycle extends Vehicle {
 		this.trail = trail;
 	}
 
+	// public methods
 	public int getSeatHeight() {
 		return seatHeight;
 	}
 
-	public void setSeatHeight(int seatHeight) {
+	public void setSeatHeight(int seatHeight) throws Exception {
+		super.checkLimit(seatHeight, "seatHeight", 0, 1000);
 		this.seatHeight = seatHeight;
 	}
 
@@ -28,7 +32,8 @@ public class MotorCycle extends Vehicle {
 		return trail;
 	}
 
-	public void setTrail(int trail) {
+	public void setTrail(int trail) throws Exception {
+		super.checkLimit(trail, "trail", 0, 100);
 		this.trail = trail;
 	}
 
